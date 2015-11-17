@@ -1,0 +1,66 @@
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin transition($howmany, $tran1, $tran2){
+    @if $howmany == 2{
+        -webkit-transition: $tran1, $tran2;
+           -moz-transition: $tran1, $tran2;
+            -ms-transition: $tran1, $tran2;
+             -o-transition: $tran1, $tran2;
+                transition: $tran1, $tran2;
+    }
+    @else{
+        -webkit-transition: all $tran1 ease;
+           -moz-transition: all $tran1 ease;
+            -ms-transition: all $tran1 ease;
+             -o-transition: all $tran1 ease;
+                transition: all $tran1 ease;
+    }
+}
+
+@mixin transform($trr){
+        -webkit-transform: $trr ;
+           -moz-transform: $trr ;
+            -ms-transform: $trr ;
+             -o-transform: $trr ;
+                transform: $trr ;
+}
+
+
+//gradient mixin
+@mixin gradient($deg, $c1, $c2){
+    $string: "";
+    @if $deg == 45deg{
+        $string : linear, left bottom, right top;
+    }
+    @else if $deg == -45deg{
+        $string : linear, left top, right bottom;
+    }
+    @else if $deg == hori{
+        $string : linear, left top, right top;
+        $deg:left;
+    }
+    @else if $deg == vert{
+        $string : linear, left top, left bottom ;
+        $deg: top;
+    }
+    @else{
+        $string : radial, center center, 0px, center center, 100% ;
+        $deg: center;
+    }
+
+    background: $c1; /* Old browsers */
+    background: -moz-linear-gradient($deg,  $c1 0%, $c2 100%); /* FF3.6+ */
+    background: -webkit-gradient( $string , color-stop(0%,$c1), color-stop(100%,$c2)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient($deg,  $c1 0%, $c2 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient($deg,  $c1 0%, $c2 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient($deg,  $c1 0%, $c2 100%); /* IE10+ */
+    background: linear-gradient($deg,  $c1 0%, $c2 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$c1', endColorstr='$c2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
